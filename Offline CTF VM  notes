@@ -8,15 +8,3 @@ confirm path the target binary
 secure copy the target binary to the local machine
 <scp -i enpm809v-pwn.college hacker@dojo.pwn.college:/challenge/<target binary name> /home/roger-pilton/Documents/>
 run binary and get to work
-
-ls /challenge
-
-run the program to try to understand its behaviour
-
-use 
-<strings /challenge/<binary>>
-See if there are any interesting keywords
-
-
-
-Ghidra reverse engineering
