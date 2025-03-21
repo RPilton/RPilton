@@ -6,11 +6,13 @@ List the files for the challenge
 
 run the program to try to understand its behaviour
 
-use
+use `strings /challenge/<binary>`  to see if there are any interesting keywords
 
-`strings /challenge/<binary>`
+use `file /challenge/<binary>` to check intial parameters
 
-See if there are any interesting keywords
+use `strace /challenge/<binary>` to see all systems calls - this is often better later ro find specific calls to work with.
+
+use `ltrace /challenege/<binary>` to see all 
 
 ## Static Analysis tool phase
 
@@ -40,7 +42,7 @@ Open in GDB
 
 create a giant input to overflow the buffer
 
-`cyclic 256`
+`cyclic 256` pwndbg will fill correctly for 32 or 64 bit programming
 
 set a break point on ret for the vulnerable function
 
@@ -49,11 +51,26 @@ set a break point on ret for the vulnerable function
 `dissassem vuln`
 `b *vuln+<code line>`
 
-Run the target binary and check the ret address with 
+Run the target binary and check the ret address value
 
-`cyclic -l <value>`
+Use the cyclic lookup function `cyclic -l <value>` and note the offset value needed to overwrite the RBP 
 
-Note the offset value 
+simple payload if you have a win function using pwn.tools template.
+`payload = cyclic(<offset value>) + p64(exe.symbols["<win or target function>")`
+
+Can also be expressed as
+`payload = flat([
+  cyclic(<offset value>),
+  exe.symbols["<win funciton>")
+])`
+
+without pwn.tools utilities always use bite string eg
+`payload =  b"A"*88 + b"<little endian memory address>"`
+
+Note symbols works when you have a NON PIC binary
+
+
+
 
 
 
