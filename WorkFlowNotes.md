@@ -69,6 +69,9 @@ without pwn.tools utilities always use bite string eg
 
 Note symbols works when you have a NON PIC binary
 
+## Shellcode
+
+
 
 
 
