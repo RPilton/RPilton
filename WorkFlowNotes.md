@@ -70,6 +70,35 @@ without pwn.tools utilities always use bite string eg
 Note symbols works when you have a NON PIC binary
 
 ## Shellcode
+https://www.youtube.com/watch?v=NlPTT4j_78I
+https://www.ired.team/offensive-security/code-injection-process-injection/writing-and-compiling-shellcode-in-c
+
+## Gadgets and ROP
+
+Ropper 
+https://github.com/jonathansalwan/ROPgadget
+use `ropper --file <path to target binary> --search for "<target command - mov, rdi, ret, pop, etc>"`
+eg `ropper --file /challenge/classwork --search "syscall"`
+eg `ropper --file /challenge/classwork --search "pop rdi"`
+
+
+ROPGadget
+https://github.com/sashs/Ropper
+use `ROPgadget --binary <path to binary/<traget function> | grep "<target command - mov, rdi, ret, pop, etc>" `
+
+
+## Ret2Libc
+NOTE: need to cd /chall  know libc version and libc base for this to work with the pwntools rop gadget finder
+`rop = ROP([binary, libc])`
+`binsh = next(libc.search(b"bin/sh"))`
+`rop.execve(binsh, 0, 0)`
+`payload = padding + rop.chain()`
+
+
+
+
+ 
+
 
 
 
