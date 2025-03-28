@@ -76,23 +76,33 @@ https://www.ired.team/offensive-security/code-injection-process-injection/writin
 ## Gadgets and ROP
 
 Ropper 
-https://github.com/jonathansalwan/ROPgadget
+
+https://github.com/sashs/Ropper
+
 use `ropper --file <path to target binary> --search for "<target command - mov, rdi, ret, pop, etc>"`
-eg `ropper --file /challenge/classwork --search "syscall"`
-eg `ropper --file /challenge/classwork --search "pop rdi"`
+
+eg `ropper --file /challenge/classwork --search "syscall"` or  `ropper --file /challenge/classwork --search "pop rdi"`
 
 
 ROPGadget
-https://github.com/sashs/Ropper
+
+https://github.com/jonathansalwan/ROPgadget
+
 use `ROPgadget --binary <path to binary/<traget function> | grep "<target command - mov, rdi, ret, pop, etc>" `
 
 
 ## Ret2Libc
-NOTE: need to cd /chall  know libc version and libc base for this to work with the pwntools rop gadget finder
+NOTE: need to know libc version and libc base for this to work with the pwntools rop gadget finder
+eg: 
 `rop = ROP([binary, libc])`
+
 `binsh = next(libc.search(b"bin/sh"))`
+
 `rop.execve(binsh, 0, 0)`
+
 `payload = padding + rop.chain()`
+
+
 
 
 
