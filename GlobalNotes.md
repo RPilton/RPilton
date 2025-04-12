@@ -11,3 +11,9 @@ Important to setup the target file first in userspace so that it can be edited b
  Grep to search for flag in output
  
  `cat /home/hacker/output.txt | grep "pwn"`
+
+ Linux syscall table to identify seccomp rules (second to last variable)
+
+ https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md
+
+ 
